@@ -5,6 +5,8 @@ import readline from 'readline'
 import prompt from 'prompt-sync'
 import { GuessEvent, RightGuessEvent, WrongGuessEvent, StartGameEvent, UnknownEventErrorEvent } from '../events'
 
+const port = 8085
+
 const input = prompt()
 
 const clientHandlers: ClientHandlers = {
@@ -51,4 +53,4 @@ const clientHandlers: ClientHandlers = {
     onAck: async () => {}
 }
 
-const client = new Edc.Client('ws://localhost:8081', clientHandlers)
+const client = new Edc.Client(`ws://localhost:${port}`, clientHandlers)
