@@ -1,14 +1,7 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable import/no-extraneous-dependencies */
 import Edc, { BasicAuth, Event } from 'edc-ws'
-import {
-    GuessEvent,
-    UnknownEventErrorEvent,
-    RightGuessEvent,
-    WrongGuessEvent,
-    Guesses,
-    StartGameEvent
-} from '../events'
+import { GuessEvent, RightGuessEvent, WrongGuessEvent, Guesses, StartGameEvent } from '../events'
 
 const port = 8085
 
@@ -21,6 +14,7 @@ const server = new Edc.Server(port)
 server.onError = async (cause) => {
     console.log(cause.details.message)
 }
+
 server.onConnect = async (connection, auth: BasicAuth, arg3, that) => {
     const instructions = `The goal of the game is to guess what word I am thinking of from the word bank.  Good luck!`
 
